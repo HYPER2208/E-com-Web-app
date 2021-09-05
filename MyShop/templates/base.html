@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shop</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+    {% if not signedin %}
+      <!--header area start-->
+      <header>
+        <div class="left_area">
+          <a href="/login/" class="auth_btn" >Login</a>
+          <a href="/sign-up/" class="auth_btn" >Creat an Account</a>
+
+        </div>
+      </header>
+      <div class="container">
+        {% block logs %}{% endblock %}
+      </div>
+    {% else %}
+      <input type="checkbox" id="check">
+      <!--header area start-->
+      <header>
+        <label for="check">
+          <i class="fas fa-bars" id="sidebar_btn"></i>
+        </label>
+        <div class="left_area">
+          <a href="/"><h3>Something <span>Good</span></h3></a>
+        </div>
+        <div class="right_area">
+          <a href="/logout/" class="logout_btn">Logout</a>
+        </div>
+      </header>
+      <!--header area end-->
+      <!--mobile navigation bar start-->
+      
+      <div class="mobile_nav">
+        <div class="nav_bar">
+          <img src="1.png" class="mobile_profile_image" alt="">
+          <i class="fa fa-bars nav_btn"></i>
+        </div>
+        <div class="mobile_nav_items">
+          <a href="/viewprofile/{{id}}/"><i class="fas fa-user-alt"></i><span>My Profile</span></a>  <!--ll-->
+          <!-- <a href="#"><i class="fas fa-cogs"></i><span>Other Profile</span></a> -->
+          {% if type=="Seller" %}
+              <a href="/sell/neworders/"><i class="fas fa-table"></i><span>My Neworders</span></a>
+              <a href="/sell/addproducts/"><i class="fas fa-cart-plus"></i><span>Add Product</span></a>
+              <a href="/sell/sales/"><i class="fas fa-credit-card"></i><span>My Sales</span></a>
+          {% else %}
+              <a href="/buy/myorders/"><i class="fas fa-table"></i><span>My Orders</span></a>
+              <a href="/buy/cart/"><i class="fas fa-shopping-cart"></i><span>My Cart</span></a>
+              <a href="/buy/purchases/"><i class="fas fa-credit-card"></i><span>My Purches</span></a>
+          {% endif %}
+          <a href="/changepassword/"><i class="fas fa-key"></i><span>Change Password</span></a>
+        </div>
+      </div>
+      <!--mobile navigation bar end-->
+      <!--sidebar start-->
+      <div class="sidebar">
+        <div class="profile_info">
+          <img src="1.png" class="profile_image" alt="">
+          <h4>{{ name }}</h4>
+        </div>
+        <a href="/viewprofile/{{id}}/"><i class="fas fa-user-alt"></i><span>My Profile</span></a>
+        <!-- <a href="#"><i class="fas fa-cogs"></i><span>Other Profile</span></a> -->
+        {% if type=="Seller"  %}
+            <a href="/sell/neworders/"><i class="fas fa-table"></i><span>My Neworders</span></a>
+            <a href="/sell/addproducts/"><i class="fas fa-cart-plus"></i><span>Add Product</span></a>
+            <a href="/sell/sales/"><i class="fas fa-credit-card"></i><span>My Sales</span></a>
+        {% else %}
+            <a href="/buy/myorders/"><i class="fas fa-table"></i><span>My Orders</span></a>
+            <a href="/buy/cart/"><i class="fas fa-shopping-cart"></i><span>My Cart</span></a>
+            <a href="/buy/purchases/"><i class="fas fa-credit-card"></i><span>My Purches</span></a>
+        {% endif %}
+        <a href="/changepassword/"><i class="fas fa-key"></i><span>Change Password</span></a>
+      </div>
+      <!--sidebar end-->
+      <div class="content">
+        {% block contents %}{% endblock %}
+      </div>
+    {% endif %}
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $('.nav_btn').click(function(){
+        $('.mobile_nav_items').toggleClass('active');
+      });
+    });
+    </script>
+
+  </body>
+</html>
+      

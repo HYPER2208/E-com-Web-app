@@ -1,0 +1,79 @@
+{% extends "base.html"%}
+
+{% block logs %} 
+<div class="Mycard">
+  <div class="ContentBx">
+    {% if err %}
+      <h6>Sorry! entered email and password do not match any records</h6>
+    {% endif %}
+    <br>
+    <form action="" method="POST">
+      <h2 align="center" >Login</h2>
+      <h5>Type Of Account</h5>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="type" id="exampleRadios1" value="a"Customer" checked>
+        <label class="form-check-label" for="exampleRadios1">
+          Customer
+        </label>
+      </div>
+
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="type" id="exampleRadios2" value="Seller">
+        <label class="form-check-label" for="exampleRadios2">
+          Seller
+        </label>
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="email"><i class="fas fa-envelope"></i></label>
+        <input type="email" class="myInput" id="email" name="email" placeholder="Enter Your Email" required>
+      </div>
+      <div class="form-group">
+        <label for="password"><i class="fas fa-key"></i></label>
+        <input type="password" class="myInput" id="password" name="password" placeholder="Enter Your Password" required>
+      </div>
+      <br>
+      <input type="submit" class="btn" value="Login" ></p>
+    </form>
+  </div>
+  <div class="ImgBx">
+
+  </div>
+</div>
+
+{% endblock %}
+
+<!-- <html>
+<head>
+  <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+  <link href="https://fonts.googleapis.com/css?family=Acme|K2D" rel="stylesheet">
+  <link rel='icon' href="{{url_for('static', filename='logo.png')}}">
+</head>
+<body>
+  <div class="sticky">
+    <h1>OnLineShop</h1>
+  </div>
+  <div class="nav">
+    <p><a href="/">Home</a> > <a href="">Login</a></p>
+  </div>
+  <h2>Login</h2>
+  {% if err %}
+    <p>Sorry! entered email and password do not match any records</p>
+  {% endif %}
+  <form action="" method="POST">
+    <input type="radio" value="Customer" name="type" checked>Customer &nbsp &nbsp<input type="radio" value="Seller" name="type">Seller
+    <table>
+      <tr>
+        <td>EMAIL:</td><td><input type="email" name="email" required></td>
+      </tr><tr>
+        <td>PASSWORD:</td><td><input type="password" name="password" required></td>
+      </tr>
+    </table>
+    <input type="submit" value="SUBMIT" style="display:block; margin-left:auto; margin-right:auto; margin-top:1vw;">
+  </form>
+</body>
+</html> -->
+
+
+
+
